@@ -1,5 +1,6 @@
 import { getStudios } from "@/lib/services/studios";
 import BookingClient from "./BookingClient";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Book a Studio | SVARA STUDIO",
@@ -8,5 +9,9 @@ export const metadata = {
 
 export default async function BookingPage() {
   const studios = await getStudios();
-  return <BookingClient studios={studios} />;
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-background" />}>
+      <BookingClient studios={studios} />
+    </Suspense>
+  );
 }
