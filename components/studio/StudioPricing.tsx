@@ -64,19 +64,11 @@ export default function StudioPricing({ studio }: StudioPricingProps) {
           </Button>
         </Link>
         
-        {/* Book Now (Disabled / Coming Soon) */}
-        <div className="relative">
-          <Button
-            variant="secondary"
-            className="w-full"
-            disabled
-          >
+        <Link href="/schedule" className="block w-full">
+          <Button variant="secondary" className="w-full">
             Book Now
           </Button>
-          <span className="absolute -top-2.5 -right-1.5 inline-flex items-center rounded-full bg-accent/15 px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider text-accent border border-accent/20 backdrop-blur-sm pointer-events-none">
-            Coming Soon
-          </span>
-        </div>
+        </Link>
       </div>
 
       {/* Membership discount card teaser */}
