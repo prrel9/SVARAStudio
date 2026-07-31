@@ -20,10 +20,10 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-64 w-full max-w-7xl bg-[radial-gradient(circle_at_top,rgba(108,99,255,0.12),transparent_70%)] blur-3xl pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-6 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           
           {/* Brand Col */}
-          <div className="md:col-span-1 space-y-4">
+          <div className="md:col-span-5 space-y-5">
             <Link
               href="/"
               className="flex items-center text-xl font-bold tracking-tight text-white focus:outline-none"
@@ -32,13 +32,14 @@ export default function Footer() {
                 SVARA<span className="text-[#6C63FF]"> STUDIO</span>
               </span>
             </Link>
-            <p className="text-xs leading-relaxed max-w-xs text-[#A7B0C0]">
+            <p className="text-xs leading-relaxed max-w-sm text-[#A7B0C0]">
               Professional music rehearsal spaces with premium equipment, acoustically treated rooms, and an effortless online booking experience.
             </p>
+            <div className="h-px w-16 bg-gradient-to-r from-[#6C63FF] to-transparent" />
           </div>
 
           {/* Navigation Link Col */}
-          <div className="space-y-4">
+          <div className="md:col-span-2 space-y-4">
             <h3 className="text-[#F5F7FA] text-xs font-extrabold tracking-wider uppercase">Navigation</h3>
             <ul className="space-y-2.5">
               {links.navigation.map((item) => (
@@ -55,7 +56,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Col */}
-          <div className="space-y-4">
+          <div className="md:col-span-5 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
             <h3 className="text-[#F5F7FA] text-xs font-extrabold tracking-wider uppercase">Contact & Visit</h3>
             <ul className="space-y-3 text-xs">
               <li className="flex items-start space-x-3">
