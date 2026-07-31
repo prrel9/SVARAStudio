@@ -12,14 +12,6 @@ export default function Footer() {
       { name: "About", href: "/about" },
       { name: "Contact", href: "/contact" },
     ],
-    studios: [
-      { name: "Studio Echo", href: "/studios/echo" },
-      { name: "Studio Pulse", href: "/studios/pulse" },
-      { name: "Studio Nova", href: "/studios/nova" },
-      { name: "Studio Resonance", href: "/studios/resonance" },
-      { name: "Studio Horizon", href: "/studios/horizon" },
-      { name: "Studio Legacy", href: "/studios/legacy" },
-    ],
   };
 
   return (
@@ -28,7 +20,7 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-64 w-full max-w-7xl bg-[radial-gradient(circle_at_top,rgba(108,99,255,0.12),transparent_70%)] blur-3xl pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-6 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           
           {/* Brand Col */}
           <div className="md:col-span-1 space-y-4">
@@ -50,23 +42,6 @@ export default function Footer() {
             <h3 className="text-[#F5F7FA] text-xs font-extrabold tracking-wider uppercase">Navigation</h3>
             <ul className="space-y-2.5">
               {links.navigation.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-xs text-[#A7B0C0] hover:text-[#6C63FF] transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Studios Link Col */}
-          <div className="space-y-4">
-            <h3 className="text-[#F5F7FA] text-xs font-extrabold tracking-wider uppercase">Our Studios</h3>
-            <ul className="space-y-2.5">
-              {links.studios.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
