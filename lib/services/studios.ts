@@ -4,7 +4,7 @@ import { createAdminSupabaseClient } from "@/lib/supabase/admin";
 import type { Studio } from "@/lib/types";
 
 export async function getStudios(): Promise<Studio[]> {
-  const supabase = getStudioSupabaseClient();
+  const supabase = await getStudioSupabaseClient();
   const { data, error } = await supabase.from("studios").select("*");
 
   if (error || !data) {
@@ -21,7 +21,7 @@ export async function getStudios(): Promise<Studio[]> {
 }
 
 export async function getStudioBySlug(slug: string): Promise<Studio | null> {
-  const supabase = getStudioSupabaseClient();
+  const supabase = await getStudioSupabaseClient();
   const { data, error } = await supabase
     .from("studios")
     .select("*")
