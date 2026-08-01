@@ -1,11 +1,13 @@
 import { createClient } from "@/lib/supabase/server";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { createAdminSupabaseClient } from "@/lib/supabase/admin";
+import { unstable_noStore as noStore } from "next/cache";
 import type { Studio } from "@/lib/types";
 
 export async function getStudios(): Promise<Studio[]> {
+  noStore();
   const supabase = await getStudioSupabaseClient();
-  const { data, error } = await supabase.from("studios").select("*");
+  const { data, error } = await supabase.from("studios").select("*").eq("is_active", true);
 
   if (error || !data) {
     console.error("Error fetching studios:", {
@@ -21,11 +23,13 @@ export async function getStudios(): Promise<Studio[]> {
 }
 
 export async function getStudioBySlug(slug: string): Promise<Studio | null> {
+  noStore();
   const supabase = await getStudioSupabaseClient();
   const { data, error } = await supabase
     .from("studios")
     .select("*")
     .eq("slug", slug)
+    .eq("is_active", true)
     .maybeSingle();
 
   if (error || !data) {
@@ -43,6 +47,7 @@ export async function getStudioBySlug(slug: string): Promise<Studio | null> {
 }
 
 export async function getStudioSlugs(): Promise<{ slug: string }[]> {
+  noStore();
   const supabase = process.env.SUPABASE_SERVICE_ROLE_KEY
     ? createAdminSupabaseClient()
     : createSupabaseClient(
@@ -50,7 +55,10 @@ export async function getStudioSlugs(): Promise<{ slug: string }[]> {
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
       );
   
-  const { data, error } = await supabase.from("studios").select("slug");
+  const { data, error } = await supabase
+    .from("studios")
+    .select("slug")
+    .eq("is_active", true);
   
   if (error || !data) {
     console.error("Error fetching studio slugs:", error);
