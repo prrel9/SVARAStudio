@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import {
   updateStudioAdmin,
   deleteStudioAdmin,
@@ -7,6 +8,15 @@ import {
 import type { StudioFormData } from "@/lib/services/studiosAdmin";
 
 export const dynamic = "force-dynamic";
+
+function revalidateStudioPages(slug?: string) {
+  revalidatePath("/");
+  revalidatePath("/studios");
+  revalidatePath("/schedule");
+  revalidatePath("/booking");
+
+  if (slug) revalidatePath(`/studios/${slug}`);
+}
 
 // PUT — update full studio
 export async function PUT(
@@ -17,6 +27,7 @@ export async function PUT(
     const { id } = await params;
     const body: Partial<StudioFormData> = await req.json();
     const studio = await updateStudioAdmin(id, body);
+    revalidateStudioPages(studio.slug);
     return NextResponse.json(studio);
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Failed to update studio";
