@@ -78,6 +78,7 @@ interface StudioFormModalProps {
   initial: StudioFormData;
   onClose: () => void;
   onSubmit: (data: StudioFormData) => Promise<void>;
+  onThumbnailUploaded?: (thumbnail: string) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -86,6 +87,7 @@ function StudioFormModal({
   initial,
   onClose,
   onSubmit,
+  onThumbnailUploaded,
   isLoading,
 }: StudioFormModalProps) {
   const [form, setForm] = useState<StudioFormData>(initial);
@@ -136,8 +138,11 @@ function StudioFormModal({
         return;
       }
       set("thumbnail", result.url);
+      if (mode === "edit" && onThumbnailUploaded) {
+        await onThumbnailUploaded(result.url);
+      }
     } catch {
-      setThumbnailUploadError("Kesalahan jaringan saat mengunggah thumbnail.");
+      setThumbnailUploadError("Thumbnail gagal disimpan. Silakan coba lagi.");
     } finally {
       setIsUploadingThumbnail(false);
       if (thumbnailInputRef.current) thumbnailInputRef.current.value = "";
@@ -521,6 +526,26 @@ export default function StudiosAdminClient({ initialStudios }: StudiosAdminClien
     }
   };
 
+  const handleThumbnailUploaded = async (thumbnail: string) => {
+    if (!editTarget) return;
+
+    const res = await fetch(`/api/admin/studios/${editTarget.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ thumbnail }),
+    });
+    const result = await res.json();
+
+    if (!res.ok) {
+      throw new Error(result.error ?? "Failed to save thumbnail");
+    }
+
+    const updated = result as AdminStudio;
+    setStudios((prev) => prev.map((studio) => (studio.id === updated.id ? updated : studio)));
+    setEditTarget(updated);
+    showToast("Thumbnail updated", "success");
+  };
+
   // ── Toggle Active ─────────────────────────────────────────────────────────
   const handleToggleActive = async (studio: AdminStudio) => {
     try {
@@ -779,6 +804,7 @@ export default function StudiosAdminClient({ initialStudios }: StudiosAdminClien
           initial={editFormData}
           onClose={() => setEditTarget(null)}
           onSubmit={handleEdit}
+          onThumbnailUploaded={handleThumbnailUploaded}
           isLoading={isActionLoading}
         />
       )}
