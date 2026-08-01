@@ -77,10 +77,10 @@ export default function Footer() {
               <li className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-[#6C63FF] shrink-0" />
                 <a
-                  href="mailto:info@faulshousestudio.com"
+                  href="mailto:info@svarastudio.com"
                   className="hover:text-white transition-colors"
                 >
-                  info@faulshousestudio.com
+                  info@svarastudio.com
                 </a>
               </li>
               <li className="flex items-start space-x-3 pt-2">

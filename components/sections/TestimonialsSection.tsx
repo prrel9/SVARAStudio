@@ -8,7 +8,7 @@ import { Testimonial } from "@/lib/types";
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-1" aria-label={`Rating: ${rating} out of 5`}>
+    <div className="flex gap-1" aria-label={`Penilaian: ${rating} dari 5`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
@@ -68,8 +68,8 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
       </div>
       <Container>
         <SectionHeader
-          eyebrow="Testimonials"
-          title="Trusted by Musicians."
+          eyebrow="Testimoni"
+          title="Dipercaya Para Musisi."
           description="Hundreds of bands and solo artists have made SVARA STUDIO their creative home. Here is what they say."
         />
 
@@ -93,7 +93,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
                 <div className="relative h-10 w-10 overflow-hidden rounded-full border border-[#6C63FF]/30 shrink-0">
                   <Image
                     src={t.avatar}
-                    alt={`Photo of ${t.name}`}
+                    alt={`Foto ${t.name}`}
                     fill
                     sizes="40px"
                     className="object-cover"
@@ -114,9 +114,9 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
         {/* Overall stats */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
           {[
-            { value: "4.9/5", label: "Average Rating" },
-            { value: "1,000+", label: "Sessions Completed" },
-            { value: "95%", label: "Return Customers" },
+            { value: "4.9/5", label: "Rata-rata Penilaian" },
+            { value: "1,000+", label: "Sesi Selesai" },
+            { value: "95%", label: "Pelanggan Kembali" },
           ].map((s) => (
             <div key={s.label} className="glass-panel p-4 text-center">
               <p className="text-2xl font-extrabold text-[#6C63FF]">{s.value}</p>

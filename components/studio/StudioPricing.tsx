@@ -23,33 +23,33 @@ export default function StudioPricing({ studio }: StudioPricingProps) {
       {/* Starting from pricing label */}
       <div className="space-y-1">
         <span className="text-xs font-semibold text-text-secondary uppercase tracking-wider">
-          Booking Rate
+          Tarif Pemesanan
         </span>
         <div className="flex items-baseline gap-1.5">
           <span className="text-3xl font-extrabold text-white">
             {formatPrice(studio.pricePerHour)}
           </span>
-          <span className="text-sm text-text-secondary">/ hour</span>
+          <span className="text-sm text-text-secondary">/ jam</span>
         </div>
         <p className="text-xs text-text-secondary">
-          No registration fees. No hidden equipment rental charges.
+          Tanpa biaya pendaftaran. Tanpa biaya sewa peralatan tersembunyi.
         </p>
       </div>
 
       {/* Booking Rules specs checklist */}
       <div className="border-t border-border-custom pt-4 space-y-3">
         <div className="flex items-center justify-between text-xs">
-          <span className="text-text-secondary">Minimum Rehearsal</span>
-          <span className="font-bold text-white">1 Hour</span>
+          <span className="text-text-secondary">Minimal Latihan</span>
+          <span className="font-bold text-white">1 Jam</span>
         </div>
         <div className="flex items-center justify-between text-xs">
-          <span className="text-text-secondary">Cancellation Limit</span>
-          <span className="font-bold text-white">2 Hours prior</span>
+          <span className="text-text-secondary">Batas Pembatalan</span>
+          <span className="font-bold text-white">2 Jam sebelumnya</span>
         </div>
         <div className="flex items-center justify-between text-xs">
-          <span className="text-text-secondary">Availability</span>
+          <span className="text-text-secondary">Ketersediaan</span>
           <span className={`font-bold ${studio.isAvailable ? "text-success-custom" : "text-error-custom"}`}>
-            {studio.isAvailable ? "Open for bookings" : "Fully Booked Today"}
+            {studio.isAvailable ? "Terbuka untuk pemesanan" : "Penuh untuk hari ini"}
           </span>
         </div>
       </div>
@@ -60,13 +60,13 @@ export default function StudioPricing({ studio }: StudioPricingProps) {
         <Link href="/schedule" className="block w-full">
           <Button variant="primary" className="w-full flex items-center justify-center gap-2">
             <Calendar className="h-4 w-4" />
-            Check Availability
+            Cek Ketersediaan
           </Button>
         </Link>
         
         <Link href="/schedule" className="block w-full">
           <Button variant="secondary" className="w-full">
-            Book Now
+            Pesan Sekarang
           </Button>
         </Link>
       </div>
@@ -76,10 +76,10 @@ export default function StudioPricing({ studio }: StudioPricingProps) {
         <Ticket className="h-5 w-5 text-accent shrink-0 mt-0.5" />
         <div>
           <h5 className="text-xs font-bold text-white">
-            Membership Packages Teaser
+            Paket Keanggotaan
           </h5>
           <p className="text-[10px] text-text-secondary mt-1 leading-relaxed">
-            Get up to 20% discount on block-booking rates, priority room reserve slots, and early stage preview access.
+            Dapatkan diskon hingga 20% untuk pemesanan blok, prioritas reservasi ruangan, dan akses pratinjau lebih awal.
           </p>
         </div>
       </div>

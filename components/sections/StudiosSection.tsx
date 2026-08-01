@@ -48,8 +48,8 @@ export default function StudiosSection({ studios }: StudiosSectionProps) {
     <Section id="studios">
       <Container>
         <SectionHeader
-          eyebrow="Our Studios"
-          title="Find Your Perfect Creative Space."
+          eyebrow="Studio Kami"
+          title="Temukan Ruang Kreatif yang Tepat."
           description="Choose the rehearsal room that fits your band, your budget, and your sound. Six unique studios, each with its own personality."
         />
 
@@ -68,7 +68,7 @@ export default function StudiosSection({ studios }: StudiosSectionProps) {
             href="/studios"
             className="inline-flex items-center gap-2 glass-button-secondary px-6 py-3 text-sm"
           >
-            View All Studios
+            Lihat Semua Studio
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>

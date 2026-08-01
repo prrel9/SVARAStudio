@@ -7,21 +7,21 @@ import Section, { Container, SectionHeader } from "@/components/ui/Section";
 const FEATURES = [
   {
     icon: Mic2,
-    title: "Premium Equipment",
+    title: "Peralatan Premium",
     description:
       "Every room is outfitted with professional-grade instruments — Pearl drums, Marshall amplifiers, Shure microphones — maintained to performance standard.",
     accentColor: "#6C63FF",
   },
   {
     icon: Sofa,
-    title: "Comfortable Environment",
+    title: "Lingkungan Nyaman",
     description:
       "Acoustically treated walls, silent air conditioning, and a clean, organized layout ensure every session is distraction-free and enjoyable.",
     accentColor: "#5EA0FF",
   },
   {
     icon: CalendarCheck,
-    title: "Effortless Booking",
+    title: "Pemesanan Praktis",
     description:
       "Transparent live schedules, instant confirmation, and a clear pricing structure — no phone calls, no hidden fees, no friction.",
     accentColor: "#6C63FF",
@@ -93,8 +93,8 @@ export default function WhyChooseUsSection() {
 
       <Container className="relative z-10">
         <SectionHeader
-          eyebrow="Why Svara Studio"
-          title="Everything You Need to Create."
+          eyebrow="Mengapa Svara Studio"
+          title="Semua yang Anda Butuhkan untuk Berkarya."
           description="We built SVARA STUDIO around one principle — musicians deserve a space that respects their craft."
         />
 

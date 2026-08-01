@@ -52,14 +52,14 @@ interface BookingResult {
 const BANK_INFO = {
   bank: "BCA",
   accountNumber: "1234567890",
-  accountHolder: "Fauls House Studio",
+  accountHolder: "Svara Studio",
 };
 
 const STEPS: { key: Step; label: string }[] = [
-  { key: "form", label: "Your Info" },
-  { key: "review", label: "Review" },
-  { key: "payment", label: "Payment" },
-  { key: "success", label: "Done" },
+  { key: "form", label: "Data Anda" },
+  { key: "review", label: "Tinjau" },
+  { key: "payment", label: "Pembayaran" },
+  { key: "success", label: "Selesai" },
 ];
 
 // ─── Step Indicator ────────────────────────────────────────────────────────────
@@ -120,7 +120,7 @@ interface SlotInfo {
 
 function SummaryCard({ slot, formData }: { slot: SlotInfo; formData?: FormData }) {
   const total = calculatePrice(slot.pricePerHour, slot.duration);
-  const displayDate = new Date(slot.date + "T00:00:00").toLocaleDateString("en-US", {
+  const displayDate = new Date(slot.date + "T00:00:00").toLocaleDateString("id-ID", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -131,23 +131,23 @@ function SummaryCard({ slot, formData }: { slot: SlotInfo; formData?: FormData }
     <div className="rounded-2xl border border-border-custom bg-surface p-6 space-y-4">
       <h3 className="text-sm font-bold text-white flex items-center gap-2">
         <Receipt className="h-4 w-4 text-accent" />
-        Booking Details
+        Detail Pemesanan
       </h3>
       <div className="space-y-3">
         <SummaryRow icon={<MapPin className="h-4 w-4" />} label="Studio" value={slot.studioName} />
-        <SummaryRow icon={<Calendar className="h-4 w-4" />} label="Date" value={displayDate} />
+        <SummaryRow icon={<Calendar className="h-4 w-4" />} label="Tanggal" value={displayDate} />
         <SummaryRow
           icon={<Clock className="h-4 w-4" />}
-          label="Time"
+          label="Waktu"
           value={`${formatHour(slot.hour)} – ${formatHour(slot.hour + slot.duration)} (${slot.duration}h)`}
         />
         {formData && (
           <>
             <div className="border-t border-border-custom pt-3" />
-            <SummaryRow icon={<User className="h-4 w-4" />} label="Name" value={formData.fullName} />
+            <SummaryRow icon={<User className="h-4 w-4" />} label="Nama" value={formData.fullName} />
             <SummaryRow icon={<Phone className="h-4 w-4" />} label="WhatsApp" value={formData.whatsapp} />
             {formData.email && (
-              <SummaryRow icon={<Mail className="h-4 w-4" />} label="Email" value={formData.email} />
+            <SummaryRow icon={<Mail className="h-4 w-4" />} label="Email" value={formData.email} />
             )}
             {formData.notes && (
               <SummaryRow icon={<MessageSquare className="h-4 w-4" />} label="Notes" value={formData.notes} />
@@ -214,7 +214,7 @@ function Countdown({ expiresAt }: { expiresAt: string }) {
     >
       <Timer className="h-4 w-4 shrink-0" />
       <span className="text-sm font-semibold">
-        Complete payment within{" "}
+      Selesaikan pembayaran dalam{" "}
         <span className="font-extrabold tabular-nums">
           {String(mins).padStart(2, "0")}:{String(secs).padStart(2, "0")}
         </span>
@@ -342,10 +342,10 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
 
   function validateForm(): boolean {
     const errors: Partial<Record<keyof FormData, string>> = {};
-    if (!formData.fullName.trim()) errors.fullName = "Full name is required";
-    if (!formData.whatsapp.trim()) errors.whatsapp = "WhatsApp number is required";
+    if (!formData.fullName.trim()) errors.fullName = "Nama lengkap wajib diisi";
+    if (!formData.whatsapp.trim()) errors.whatsapp = "Nomor WhatsApp wajib diisi";
     else if (!/^[0-9+\s-]{8,20}$/.test(formData.whatsapp.trim())) {
-      errors.whatsapp = "Enter a valid phone number";
+      errors.whatsapp = "Masukkan nomor telepon yang valid";
     }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -438,7 +438,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
               <ArrowLeft className="h-4 w-4" />
               {step === "form" ? "Back to Schedule" : "Back"}
             </button>
-            <h1 className="text-3xl font-bold text-white">Book a Studio</h1>
+            <h1 className="text-3xl font-bold text-white">Pesan Studio</h1>
             <p className="text-text-secondary mt-1">
               SVARA STUDIO &mdash; {slot.studioName}
             </p>
@@ -453,20 +453,20 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
               <SummaryCard slot={slot} />
 
               <div className="rounded-2xl border border-border-custom bg-surface p-6 space-y-5">
-                <h2 className="text-base font-bold text-white">Your Information</h2>
+                <h2 className="text-base font-bold text-white">Data Anda</h2>
                 <InputField
                   id="fullName"
-                  label="Full Name"
+                  label="Nama Lengkap"
                   required
                   value={formData.fullName}
                   onChange={(v) => setFormData((p) => ({ ...p, fullName: v }))}
-                  placeholder="John Doe"
+                  placeholder="Nama Anda"
                   icon={<User className="h-3.5 w-3.5" />}
                   error={formErrors.fullName}
                 />
                 <InputField
                   id="whatsapp"
-                  label="WhatsApp Number"
+                  label="Nomor WhatsApp"
                   required
                   type="tel"
                   value={formData.whatsapp}
@@ -481,12 +481,12 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
                   type="email"
                   value={formData.email}
                   onChange={(v) => setFormData((p) => ({ ...p, email: v }))}
-                  placeholder="Optional"
+                  placeholder="Opsional"
                   icon={<Mail className="h-3.5 w-3.5" />}
                 />
                 <InputField
                   id="notes"
-                  label="Additional Notes"
+                  label="Catatan Tambahan"
                   as="textarea"
                   value={formData.notes}
                   onChange={(v) => setFormData((p) => ({ ...p, notes: v }))}
@@ -503,7 +503,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
                   if (validateForm()) setStep("review");
                 }}
               >
-                Review Booking
+                Tinjau Pemesanan
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
@@ -523,7 +523,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
 
               <div className="rounded-xl border border-warning-custom/30 bg-warning-custom/5 px-4 py-3">
                 <p className="text-xs text-warning-custom">
-                  <strong>Note:</strong> After confirming, you have <strong>15 minutes</strong> to complete payment. The booking slot will be held during this time.
+                  <strong>Catatan:</strong> Setelah konfirmasi, Anda memiliki <strong>15 menit</strong> untuk menyelesaikan pembayaran. Slot akan ditahan selama waktu ini.
                 </p>
               </div>
 
@@ -534,7 +534,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
                 isLoading={isSubmitting}
                 onClick={handleSubmitBooking}
               >
-                Confirm &amp; Proceed to Payment
+                Konfirmasi &amp; Lanjut ke Pembayaran
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
@@ -548,7 +548,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
 
               {/* Booking Code */}
               <div className="rounded-2xl border border-border-custom bg-surface p-6 space-y-2">
-                <p className="text-xs font-semibold text-text-secondary uppercase tracking-wider">Booking Code</p>
+                <p className="text-xs font-semibold text-text-secondary uppercase tracking-wider">Kode Pemesanan</p>
                 <div className="flex items-center gap-3">
                   <span className="text-2xl font-extrabold text-white tracking-widest font-mono">
                     {bookingResult.bookingCode}
@@ -572,7 +572,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
               <div className="rounded-2xl border border-border-custom bg-surface p-6 space-y-4">
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <Building2 className="h-5 w-5 text-accent" />
-                  Transfer Payment
+                  Pembayaran Transfer
                 </h2>
                 <div className="rounded-xl bg-bg-secondary border border-border-custom p-4 space-y-3">
                   <div className="flex justify-between items-center">
@@ -580,11 +580,11 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
                     <span className="text-sm font-bold text-white">{BANK_INFO.bank}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-text-secondary uppercase tracking-wider">Account</span>
+                    <span className="text-xs text-text-secondary uppercase tracking-wider">Rekening</span>
                     <span className="text-sm font-bold text-white font-mono tracking-widest">{BANK_INFO.accountNumber}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-text-secondary uppercase tracking-wider">Holder</span>
+                    <span className="text-xs text-text-secondary uppercase tracking-wider">Pemilik</span>
                     <span className="text-sm font-bold text-white">{BANK_INFO.accountHolder}</span>
                   </div>
                   <div className="border-t border-border-custom pt-3 flex justify-between items-center">
@@ -601,7 +601,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
               <div className="rounded-2xl border border-border-custom bg-surface p-6 space-y-4">
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <Upload className="h-5 w-5 text-accent" />
-                  Upload Transfer Proof
+                  Unggah Bukti Transfer
                 </h2>
 
                 <div
@@ -616,7 +616,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
                   <Upload className={`h-8 w-8 ${proofFile ? "text-success-custom" : "text-text-secondary"}`} />
                   <div className="text-center">
                     <p className="text-sm font-semibold text-white">
-                      {proofFile ? proofFile.name : "Click to upload transfer proof"}
+                      {proofFile ? proofFile.name : "Klik untuk mengunggah bukti transfer"}
                     </p>
                     <p className="text-xs text-text-secondary mt-1">
                       JPG, PNG or PDF (max 5MB)
@@ -657,7 +657,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
                   isLoading={isUploading}
                   onClick={handleUploadProof}
                 >
-                  Submit Payment Proof
+                  Kirim Bukti Pembayaran
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
@@ -672,14 +672,14 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
               </div>
 
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-white">Payment Submitted!</h2>
+                <h2 className="text-2xl font-bold text-white">Pembayaran Terkirim!</h2>
                 <p className="text-text-secondary max-w-sm">
                   Your booking is under review. We&apos;ll confirm via WhatsApp once payment is verified.
                 </p>
               </div>
 
               <div className="w-full rounded-2xl border border-border-custom bg-surface p-6 space-y-3 text-left">
-                <p className="text-xs font-semibold text-text-secondary uppercase tracking-wider">Your Booking Code</p>
+                <p className="text-xs font-semibold text-text-secondary uppercase tracking-wider">Kode Pemesanan Anda</p>
                 <p className="text-3xl font-extrabold text-white tracking-widest font-mono">
                   {bookingResult.bookingCode}
                 </p>
@@ -706,7 +706,7 @@ export default function BookingClient({ studios }: { studios: Studio[] }) {
                   router.push("/schedule");
                 }}
               >
-                Back to Schedule
+                Kembali ke Jadwal
               </Button>
             </div>
           )}

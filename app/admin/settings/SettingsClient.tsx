@@ -229,7 +229,7 @@ export default function SettingsClient({ initial }: SettingsClientProps) {
                 type="text"
                 value={form.company_name}
                 onChange={(e) => set("company_name", e.target.value)}
-                placeholder="e.g. Fauls House Studio"
+                placeholder="e.g. Svara Studio"
                 className={inputCls}
               />
             </Field>
@@ -398,7 +398,7 @@ export default function SettingsClient({ initial }: SettingsClientProps) {
                   type="text"
                   value={form.account_holder}
                   onChange={(e) => set("account_holder", e.target.value)}
-                  placeholder="e.g. PT Fauls House Studio"
+                  placeholder="e.g. Svara Studio"
                   className={`${inputCls} pl-10`}
                 />
               </div>

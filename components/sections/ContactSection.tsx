@@ -23,8 +23,8 @@ const CONTACT_ITEMS = [
   {
     icon: Mail,
     label: "Email",
-    value: "info@faulshousestudio.com",
-    link: "mailto:info@faulshousestudio.com",
+    value: "info@svarastudio.com",
+    link: "mailto:info@svarastudio.com",
     linkLabel: "Send Email",
   },
   {

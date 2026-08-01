@@ -35,7 +35,7 @@ function formatWhatsApp(phone: string): string {
 function buildWhatsAppUrl(phone: string, bookingCode: string, name: string): string {
   const wa = formatWhatsApp(phone);
   const msg = encodeURIComponent(
-    `Halo ${name}! 🎵\n\nPembayaran booking kamu telah kami verifikasi.\n\n✅ Booking Code: *${bookingCode}*\n\nSesi kamu sudah dikonfirmasi. Sampai jumpa di Fauls House Studio!\n\nTerima kasih 🙏`
+    `Halo ${name}! 🎵\n\nPembayaran booking kamu telah kami verifikasi.\n\n✅ Booking Code: *${bookingCode}*\n\nSesi kamu sudah dikonfirmasi. Sampai jumpa di Svara Studio!\n\nTerima kasih 🙏`
   );
   return `https://wa.me/${wa}?text=${msg}`;
 }

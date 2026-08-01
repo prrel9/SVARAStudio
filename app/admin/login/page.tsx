@@ -122,7 +122,7 @@ export default function AdminLoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@faulshouse.com"
+                  placeholder="admin@svarastudio.com"
                   className="w-full rounded-2xl border border-border-custom bg-bg-secondary pl-10 pr-4 py-3 text-sm text-white placeholder:text-text-secondary/40 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all"
                 />
               </div>

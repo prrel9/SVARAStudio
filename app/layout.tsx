@@ -25,15 +25,14 @@ const satoshiFallback = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "SVARA STUDIO | Premium Music Studio Booking",
+    default: "SVARA STUDIO | Pemesanan Studio Musik Premium",
     template: "%s | SVARA STUDIO",
   },
-  description: "Create. Rehearse. Record. Repeat. Book professional rehearsal rooms equipped with premium instruments and acoustic treatment.",
-  metadataBase: new URL("https://faulshousestudio.com"),
+  description: "Berkarya. Berlatih. Rekam. Ulangi. Pesan ruang latihan profesional dengan instrumen premium dan peredam akustik.",
+  metadataBase: new URL("https://svarastudio.com"),
   openGraph: {
     title: "SVARA STUDIO",
-    description: "Premium Music Rehearsal & Recording Studio Booking Platform.",
-    url: "https://faulshousestudio.com",
+    description: "Platform pemesanan studio latihan dan rekaman musik premium.",
     siteName: "SVARA STUDIO",
     locale: "en_US",
     type: "website",
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "SVARA STUDIO",
-    description: "Premium Music Rehearsal & Recording Studio Booking Platform.",
+    description: "Platform pemesanan studio latihan dan rekaman musik premium.",
   },
   robots: {
     index: true,

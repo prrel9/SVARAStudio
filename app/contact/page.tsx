@@ -20,7 +20,7 @@ export default function ContactPlaceholder() {
               Get in Touch
             </h1>
             <p className="text-sm text-text-secondary leading-relaxed">
-              Have custom session requirements, membership questions, or equipment suggestions? Drop us an email at info@faulshousestudio.com or message us on WhatsApp. We are here to help.
+              Have custom session requirements, membership questions, or equipment suggestions? Drop us an email at info@svarastudio.com or message us on WhatsApp. We are here to help.
             </p>
           </div>
 

@@ -64,7 +64,7 @@ export default function ScheduleFilter({
               className="h-10 w-full appearance-none rounded-lg border border-border-custom bg-surface pl-9 pr-8 text-sm font-medium text-white focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               aria-label="Filter by studio"
             >
-              <option value="all">All Studios</option>
+              <option value="all">Semua Studio</option>
               {studios.map((s) => (
                 <option key={s.id} value={s.id}>
                   {s.name}
@@ -87,8 +87,8 @@ export default function ScheduleFilter({
               className="h-10 w-full appearance-none rounded-lg border border-border-custom bg-surface pl-9 pr-8 text-sm font-medium text-white focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               aria-label="Filter by availability"
             >
-              <option value="all">Any Availability</option>
-              <option value="available">Has Available Slots</option>
+              <option value="all">Semua Ketersediaan</option>
+              <option value="available">Memiliki Slot Tersedia</option>
             </select>
             <div className="pointer-events-none absolute right-3 flex items-center text-text-secondary">
               <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">

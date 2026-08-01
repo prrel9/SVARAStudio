@@ -3,8 +3,8 @@ import BookingClient from "./BookingClient";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Book a Studio | SVARA STUDIO",
-  description: "Complete your studio booking in just a few steps.",
+  title: "Pesan Studio | SVARA STUDIO",
+  description: "Selesaikan pemesanan studio Anda dalam beberapa langkah.",
 };
 
 export default async function BookingPage() {

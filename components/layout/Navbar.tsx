@@ -38,11 +38,11 @@ export default function Navbar() {
   }, [pathname]);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Studios", href: "/studios" },
-    { name: "Schedule", href: "/schedule" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Beranda", href: "/" },
+    { name: "Studio", href: "/studios" },
+    { name: "Jadwal", href: "/schedule" },
+    { name: "Tentang", href: "/about" },
+    { name: "Kontak", href: "/contact" },
   ];
 
   return (
@@ -100,7 +100,7 @@ export default function Navbar() {
               className="inline-flex items-center justify-center space-x-2 rounded-full bg-white hover:bg-white/90 px-5 py-2 text-xs font-extrabold text-[#050510] transition-all shadow-[0_4px_20px_rgba(255,255,255,0.15)] active:scale-[0.98] uppercase tracking-wide"
             >
               <Calendar className="h-3.5 w-3.5" />
-              <span>Book Session</span>
+              <span>Pesan Sesi</span>
             </Link>
           </div>
 
@@ -111,7 +111,7 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
-            aria-label="Toggle main menu"
+            aria-label="Buka/tutup menu utama"
           >
             {isMobileMenuOpen ? (
               <X className="h-5 w-5" aria-hidden="true" />
@@ -159,7 +159,7 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <Calendar className="h-4 w-4" />
-            <span>Book A Session</span>
+            <span>Pesan Sesi</span>
           </Link>
         </div>
       </div>

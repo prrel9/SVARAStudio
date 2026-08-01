@@ -96,7 +96,7 @@ export default function FAQSection() {
       <Container>
         <SectionHeader
           eyebrow="FAQ"
-          title="Got Questions? We Have Answers."
+          title="Ada Pertanyaan? Kami Punya Jawabannya."
           description="Everything you need to know before booking your first session."
         />
 
@@ -129,7 +129,7 @@ export default function FAQSection() {
         >
           {filtered.length === 0 ? (
             <p className="py-10 text-center text-sm text-[#A7B0C0]">
-              No questions in this category yet.
+              Belum ada pertanyaan di kategori ini.
             </p>
           ) : (
             filtered.map((faq) => (

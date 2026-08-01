@@ -2,8 +2,8 @@ import { getStudios } from "@/lib/services/studios";
 import ScheduleClient from "./ScheduleClient";
 
 export const metadata = {
-  title: "Schedule | SVARA STUDIO",
-  description: "View available rehearsal slots and book your session.",
+  title: "Jadwal | SVARA STUDIO",
+  description: "Lihat slot latihan yang tersedia dan pesan sesi Anda.",
 };
 
 export default async function SchedulePage() {

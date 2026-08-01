@@ -7,18 +7,18 @@ import Section, { Container, SectionHeader } from "@/components/ui/Section";
 import { Equipment } from "@/lib/types";
 import { getValidImageSrc } from "@/lib/utils/image";
 
-const CATEGORIES = ["All", "Drums", "Mixer", "Microphone", "Amplifier"];
+const CATEGORIES = ["Semua", "Drums", "Mixer", "Microphone", "Amplifier"];
 
 interface EquipmentSectionProps {
   equipments: Equipment[];
 }
 
 export default function EquipmentSection({ equipments }: EquipmentSectionProps) {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Semua");
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const filtered =
-    activeCategory === "All"
+    activeCategory === "Semua"
       ? equipments
       : equipments.filter((e) => e.category === activeCategory);
 
@@ -60,8 +60,8 @@ export default function EquipmentSection({ equipments }: EquipmentSectionProps) 
       </div>
       <Container>
         <SectionHeader
-          eyebrow="Our Equipment"
-          title="Professional Gear, Every Session."
+          eyebrow="Peralatan Kami"
+          title="Perlengkapan Profesional di Setiap Sesi."
           description="We invest in trusted instruments so you can focus on the music. Every piece of equipment is maintained, tuned, and ready."
         />
 
@@ -123,7 +123,7 @@ export default function EquipmentSection({ equipments }: EquipmentSectionProps) 
 
                 {/* Available in */}
                 <div className="border-t border-white/10 pt-3 space-y-1.5 mt-auto">
-                  <p className="text-[11px] font-bold text-[#A7B0C0]">Available in:</p>
+                  <p className="text-[11px] font-bold text-[#A7B0C0]">Tersedia di:</p>
                   <div className="flex flex-wrap gap-1.5">
                     {item.availableIn.map((s) => (
                       <span

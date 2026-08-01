@@ -1,7 +1,7 @@
 // Status color and label configuration — single source of truth for the legend
 export const SLOT_STATUS_CONFIG = {
   available: {
-    label: "Available",
+    label: "Tersedia",
     bg: "bg-success-custom/15",
     border: "border-success-custom/40",
     text: "text-success-custom",
@@ -9,7 +9,7 @@ export const SLOT_STATUS_CONFIG = {
     hoverBg: "hover:bg-success-custom/25",
   },
   booked: {
-    label: "Booked",
+    label: "Dipesan",
     bg: "bg-error-custom/15",
     border: "border-error-custom/40",
     text: "text-error-custom",
@@ -17,7 +17,7 @@ export const SLOT_STATUS_CONFIG = {
     hoverBg: "",
   },
   unavailable: {
-    label: "Unavailable",
+    label: "Tidak tersedia",
     bg: "bg-surface",
     border: "border-border-custom",
     text: "text-text-secondary",
@@ -25,7 +25,7 @@ export const SLOT_STATUS_CONFIG = {
     hoverBg: "",
   },
   selected: {
-    label: "Selected",
+    label: "Dipilih",
     bg: "bg-warning-custom/20",
     border: "border-warning-custom/60",
     text: "text-warning-custom",

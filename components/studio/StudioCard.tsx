@@ -107,17 +107,17 @@ export default function StudioCard({ studio }: StudioCardProps) {
           </div>
           <div className="flex items-center gap-1.5 text-xs text-[#A7B0C0]">
             <Zap className="h-3.5 w-3.5 text-[#6C63FF]" aria-hidden="true" />
-            <span>AC Included</span>
+            <span>Termasuk AC</span>
           </div>
         </div>
 
         {/* Pricing & CTA */}
         <div className="mt-auto flex items-center justify-between gap-3 pt-3">
           <div>
-            <p className="text-[11px] text-[#A7B0C0]">Starting from</p>
+            <p className="text-[11px] text-[#A7B0C0]">Mulai dari</p>
             <p className="text-lg font-extrabold text-[#F5F7FA]">
               {formatPrice(studio.pricePerHour)}
-              <span className="text-xs font-normal text-[#A7B0C0]"> / hr</span>
+              <span className="text-xs font-normal text-[#A7B0C0]"> / jam</span>
             </p>
           </div>
 
@@ -125,7 +125,7 @@ export default function StudioCard({ studio }: StudioCardProps) {
             href={`/studios/${studio.slug}`}
             className="inline-flex items-center gap-2 rounded-2xl border border-[#6C63FF]/40 bg-[#6C63FF]/10 px-4 py-2 text-xs font-extrabold text-[#6C63FF] hover:bg-[#6C63FF] hover:text-[#050510] transition-all duration-300 shadow-[0_4px_16px_rgba(108,99,255,0.15)]"
           >
-            <span>View Detail</span>
+            <span>Lihat Detail</span>
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         </div>

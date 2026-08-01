@@ -4,8 +4,8 @@ import StudioCard from "@/components/studio/StudioCard";
 import { getStudios } from "@/lib/services/studios";
 
 export const metadata = {
-  title: "Explore Studios | SVARA STUDIO",
-  description: "Browse our list of six rehearsal studios with professional gear, size choices, and prices.",
+  title: "Jelajahi Studio | SVARA STUDIO",
+  description: "Jelajahi enam studio latihan dengan peralatan profesional, pilihan ukuran, dan harga.",
 };
 
 export default async function StudiosPage() {
