@@ -31,6 +31,24 @@ export interface StudioFormData {
   is_active: boolean;
 }
 
+const THUMBNAIL_COLUMNS = ["thumbnail", "thumbnail_url", "image_url", "image"] as const;
+
+function moveThumbnailToFallbackColumn(payload: Record<string, unknown>, missingColumn: string): boolean {
+  const currentIndex = THUMBNAIL_COLUMNS.indexOf(
+    missingColumn as (typeof THUMBNAIL_COLUMNS)[number]
+  );
+  const thumbnail = payload[missingColumn];
+  const nextColumn = THUMBNAIL_COLUMNS[currentIndex + 1];
+
+  if (currentIndex === -1 || typeof thumbnail !== "string" || !nextColumn) {
+    return false;
+  }
+
+  delete payload[missingColumn];
+  payload[nextColumn] = thumbnail;
+  return true;
+}
+
 // ─── Fetch All Studios (Admin) ────────────────────────────────────────────────
 
 export async function getAllStudiosAdmin(): Promise<AdminStudio[]> {
@@ -70,6 +88,9 @@ export async function createStudioAdmin(form: StudioFormData): Promise<AdminStud
       // Auto-strip missing column from payload if schema cache is missing it in DB
       const match = error.message?.match(/Could not find the '([^']+)' column/i);
       if (match && match[1] && match[1] in payload) {
+        if (moveThumbnailToFallbackColumn(payload, match[1])) {
+          continue;
+        }
         console.warn(`Stripping missing DB column '${match[1]}' from insert payload`);
         delete payload[match[1]];
         continue;
@@ -111,6 +132,9 @@ export async function updateStudioAdmin(
       // Auto-strip missing column from payload if schema cache is missing it in DB
       const match = error.message?.match(/Could not find the '([^']+)' column/i);
       if (match && match[1] && match[1] in payload) {
+        if (moveThumbnailToFallbackColumn(payload, match[1])) {
+          continue;
+        }
         console.warn(`Stripping missing DB column '${match[1]}' from update payload`);
         delete payload[match[1]];
         continue;
@@ -198,7 +222,7 @@ function mapAdminStudio(row: any): AdminStudio {
     capacity: Number(row.capacity || 0),
     roomSize: String(row.room_size || ""),
     equipmentLevel: String(row.equipment_level || "Standard"),
-    thumbnail: String(row.thumbnail || row.thumbnail_url || row.image_url || ""),
+    thumbnail: String(row.thumbnail || row.thumbnail_url || row.image_url || row.image || ""),
     badge: String(row.badge || ""),
     isActive: row.is_active !== undefined ? Boolean(row.is_active) : row.is_available !== undefined ? Boolean(row.is_available) : true,
     createdAt: row.created_at || "",
