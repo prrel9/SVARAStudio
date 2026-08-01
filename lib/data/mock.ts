@@ -9,43 +9,43 @@ export const FAQS: FAQ[] = [
   {
     id: "1",
     category: "Booking",
-    question: "How do I make a booking?",
+    question: "Bagaimana cara melakukan pemesanan?",
     answer:
-      "Simply browse our studios, select your preferred room, pick a date and time from the available schedule, and confirm your booking. You will receive an instant confirmation.",
+      "Pilih studio yang Anda inginkan, tentukan tanggal dan jam dari jadwal yang tersedia, lalu konfirmasi pemesanan. Anda akan menerima konfirmasi secara langsung.",
   },
   {
     id: "2",
     category: "Booking",
-    question: "Can I book on the same day?",
+    question: "Apakah saya bisa memesan untuk hari ini?",
     answer:
-      "Yes, same-day bookings are available as long as the time slot is still open. We recommend booking at least a few hours in advance to secure your preferred time.",
+      "Bisa, selama slot waktu masih tersedia. Kami menyarankan pemesanan beberapa jam sebelumnya agar jadwal pilihan Anda lebih aman.",
   },
   {
     id: "3",
     category: "Cancellation",
-    question: "What is your cancellation policy?",
+    question: "Bagaimana kebijakan pembatalan?",
     answer:
-      "You may cancel or reschedule up to 2 hours before your session starts with no charge. Late cancellations may be subject to a partial fee.",
+      "Anda dapat membatalkan atau menjadwalkan ulang hingga 2 jam sebelum sesi dimulai tanpa biaya. Pembatalan mendadak dapat dikenakan biaya sebagian.",
   },
   {
     id: "4",
     category: "Facilities",
-    question: "Is parking available?",
+    question: "Apakah tersedia tempat parkir?",
     answer:
-      "Yes, we have dedicated parking space for customers. Motorcycle and car parking are both available at no extra cost during your session.",
+      "Ya, tersedia area parkir khusus pelanggan. Parkir motor dan mobil tersedia tanpa biaya tambahan selama sesi Anda.",
   },
   {
     id: "5",
     category: "Equipment",
-    question: "Can I bring my own equipment?",
+    question: "Apakah saya boleh membawa peralatan sendiri?",
     answer:
-      "Absolutely. You are welcome to bring your own guitar, pedals, or accessories. Our rooms are fully compatible with external gear.",
+      "Tentu. Anda boleh membawa gitar, pedal, atau aksesori sendiri. Ruangan kami kompatibel dengan peralatan tambahan dari luar.",
   },
   {
     id: "6",
     category: "Payment",
-    question: "What payment methods do you accept?",
+    question: "Metode pembayaran apa yang tersedia?",
     answer:
-      "We currently accept cash on-site and bank transfer. Online payment integration is coming soon.",
+      "Saat ini kami menerima pembayaran tunai di lokasi dan transfer bank. Integrasi pembayaran online akan segera tersedia.",
   },
 ];

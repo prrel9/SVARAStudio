@@ -50,6 +50,15 @@ function FAQItem({
 
 const CATEGORIES = ["All", "Booking", "Facilities", "Equipment", "Cancellation", "Payment"];
 
+const CATEGORY_LABELS: Record<string, string> = {
+  All: "Semua",
+  Booking: "Pemesanan",
+  Facilities: "Fasilitas",
+  Equipment: "Peralatan",
+  Cancellation: "Pembatalan",
+  Payment: "Pembayaran",
+};
+
 export default function FAQSection() {
   const [openId, setOpenId] = useState<string | null>(FAQS[0].id);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -97,11 +106,11 @@ export default function FAQSection() {
         <SectionHeader
           eyebrow="FAQ"
           title="Ada Pertanyaan? Kami Punya Jawabannya."
-          description="Everything you need to know before booking your first session."
+          description="Semua yang perlu Anda ketahui sebelum memesan sesi pertama Anda."
         />
 
         {/* Category chips */}
-        <div className="mb-8 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filter FAQ by category">
+        <div className="mb-8 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filter FAQ berdasarkan kategori">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -117,7 +126,7 @@ export default function FAQSection() {
                   : "border border-white/10 bg-white/5 text-[#A7B0C0] hover:text-white hover:bg-white/10"
               }`}
             >
-              {cat}
+              {CATEGORY_LABELS[cat]}
             </button>
           ))}
         </div>
