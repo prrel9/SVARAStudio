@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   Plus,
@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import AdminHeader from "@/components/admin/AdminHeader";
 import { formatIDR } from "@/lib/data/schedule";
+import { createClient } from "@/lib/supabase/client";
 import type { AdminStudio, StudioFormData } from "@/lib/services/studiosAdmin";
 
 interface StudiosAdminClientProps {
@@ -438,12 +439,36 @@ export default function StudiosAdminClient({ initialStudios }: StudiosAdminClien
     setTimeout(() => setToast(null), 4000);
   }, []);
 
+  const fetchStudios = useCallback(async () => {
+    const res = await fetch("/api/admin/studios", { cache: "no-store" });
+    if (res.ok) setStudios(await res.json());
+  }, []);
+
+  // Keep every open admin dashboard in sync when a studio record changes.
+  // The thumbnail URL is stored on this record after an upload is saved.
+  useEffect(() => {
+    const supabase = createClient();
+    const channel = supabase
+      .channel("admin-studios-realtime")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "studios" },
+        () => {
+          void fetchStudios();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [fetchStudios]);
+
   // ── Refresh ──────────────────────────────────────────────────────────────
   const handleRefresh = async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch("/api/admin/studios", { cache: "no-store" });
-      if (res.ok) setStudios(await res.json());
+      await fetchStudios();
     } finally {
       setIsRefreshing(false);
     }
