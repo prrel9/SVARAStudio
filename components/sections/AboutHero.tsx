@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Music2, Sparkles, Waves } from "lucide-react";
+import { Music2, Sparkles } from "lucide-react";
 
 interface AboutHeroProps {
   companyName: string;
@@ -64,8 +64,10 @@ export default function AboutHero({ companyName, logoUrl }: AboutHeroProps) {
           >
             <motion.div
               className="flex h-full w-full items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-[#090b16] shadow-inner [transform-style:preserve-3d]"
-              animate={{ rotateY: [0, 10, 0, -10, 0], rotateX: [2, -4, 2] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ rotateX: [2, -3, 2] }}
+              transition={{
+                rotateX: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
+              }}
             >
               {logoUrl ? (
                 <img
@@ -83,10 +85,6 @@ export default function AboutHero({ companyName, logoUrl }: AboutHeroProps) {
               )}
             </motion.div>
           </motion.div>
-          <div className="absolute -bottom-5 -left-5 flex items-center gap-2 rounded-full border border-white/10 bg-[#0b1020]/90 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#C4B5FD] shadow-xl backdrop-blur-xl">
-            <Waves className="h-3.5 w-3.5 text-[#00D4FF]" />
-            Made for music
-          </div>
         </motion.div>
       </div>
     </section>

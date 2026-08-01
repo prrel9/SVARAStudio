@@ -96,7 +96,7 @@ export default function HeroSection() {
               href="/schedule"
               className="inline-flex items-center gap-2 rounded-full bg-[#6C63FF] px-5 py-2.5 text-[10px] font-extrabold uppercase tracking-wide text-white shadow-[0_10px_30px_rgba(108,99,255,0.42)] transition-all hover:-translate-y-0.5 hover:bg-[#8B83FF] hover:shadow-[0_14px_36px_rgba(108,99,255,0.55)]"
             >
-              Pesan sesi sekarang <ArrowUpRight className="h-4 w-4" />
+              Pesan Studio sekarang <ArrowUpRight className="h-4 w-4" />
             </Link>
             <Link
               href="/studios"

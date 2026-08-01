@@ -3,7 +3,7 @@ import ScheduleClient from "./ScheduleClient";
 
 export const metadata = {
   title: "Jadwal | SVARA STUDIO",
-  description: "Lihat slot latihan yang tersedia dan pesan sesi Anda.",
+  description: "Lihat slot latihan yang tersedia dan pesan Studio Anda.",
 };
 
 export default async function SchedulePage() {
