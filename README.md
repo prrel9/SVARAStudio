@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SVARA STUDIO
 
-## Getting Started
+Platform booking studio musik modern untuk menampilkan ruang studio, mengecek jadwal, menerima booking, dan mengelola operasional dari dashboard admin.
 
-First, run the development server:
+## Fitur utama
+
+- Katalog studio, detail ruang, harga, kapasitas, dan peralatan.
+- Jadwal booking serta validasi slot agar tidak terjadi bentrok.
+- Alur booking pelanggan: data pemesan, konfirmasi, dan unggah bukti pembayaran.
+- Dashboard admin untuk mengelola studio, peralatan, booking, pembayaran, serta pengaturan bisnis.
+- Upload thumbnail studio dan logo ke Supabase Storage.
+- Statistik booking, pendapatan, status pembayaran, dan aktivitas terkini.
+- Autentikasi admin berbasis Supabase Auth dan proteksi rute `/admin`.
+- Pembaruan realtime untuk data studio/thumbnail melalui Supabase Realtime.
+
+## Teknologi
+
+| Area | Teknologi |
+| --- | --- |
+| Frontend | Next.js 15, React 19, TypeScript |
+| Styling | Tailwind CSS 4 |
+| Backend & database | Supabase (PostgreSQL, Auth, Storage, Realtime) |
+| Visualisasi | Recharts, GSAP, Framer Motion, React Three Fiber |
+| Deployment | Vercel |
+
+## Menjalankan proyek secara lokal
+
+### Prasyarat
+
+- Node.js 20 atau lebih baru
+- npm 10 atau lebih baru
+- Project Supabase
+
+### Instalasi
+
+```bash
+git clone https://github.com/prrel9/SVARAStudio.git
+cd SVARAStudio
+npm install
+```
+
+Buat file `.env.local` pada root proyek:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+CRON_SECRET=your-random-secret
+```
+
+> Jangan pernah memasukkan `SUPABASE_SERVICE_ROLE_KEY` ke client, commit Git, atau layanan publik. Key ini hanya digunakan pada route/server service.
+
+Jalankan development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Konfigurasi Supabase
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Jalankan file SQL dalam folder `supabase/migrations` melalui **Supabase Dashboard → SQL Editor**, sesuai urutan nomor file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Untuk pembaruan thumbnail studio antar-tab secara realtime, jalankan juga:
 
-## Learn More
+```text
+supabase/migrations/006_enable_studios_realtime.sql
+```
 
-To learn more about Next.js, take a look at the following resources:
+Migration `006` di repository bersifat idempoten, jadi aman dijalankan sekali melalui file aslinya. Pastikan pengguna admin memiliki policy `SELECT` pada tabel `studios`, karena Supabase Realtime mengikuti Row Level Security (RLS).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Perintah yang tersedia
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Menjalankan aplikasi saat development
+npm run dev
 
-## Deploy on Vercel
+# Membuat production build
+npm run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Menjalankan build production secara lokal
+npm run start
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Menjalankan pengecekan ESLint
+npm run lint
+```
+
+## Halaman penting
+
+| Rute | Keterangan |
+| --- | --- |
+| `/` | Landing page, studio unggulan, dan testimoni |
+| `/studios` | Daftar seluruh studio |
+| `/studios/[slug]` | Detail studio |
+| `/schedule` | Jadwal dan ketersediaan studio |
+| `/booking` | Proses booking pelanggan |
+| `/admin/login` | Login administrator |
+| `/admin` | Analitik dan ringkasan operasional |
+| `/admin/studios` | Manajemen studio dan thumbnail |
+| `/admin/equipments` | Manajemen peralatan |
+| `/admin/bookings` | Manajemen booking |
+| `/admin/payments` | Verifikasi pembayaran |
+| `/admin/settings` | Pengaturan informasi bisnis |
+
+## Deploy ke Vercel
+
+1. Push branch `main` ke GitHub.
+2. Import repository di [Vercel](https://vercel.com/new).
+3. Masukkan seluruh environment variable dari `.env.local` pada **Project Settings → Environment Variables**.
+4. Deploy.
+
+Setelah mengganti environment variable atau migration Supabase, lakukan redeploy agar server route menggunakan konfigurasi terbaru.
+
+## Struktur proyek
+
+```text
+app/                    # Halaman, API routes, dan dashboard admin
+components/             # Komponen UI, layout, dan section halaman
+lib/services/           # Akses data dan business logic Supabase
+lib/supabase/           # Browser, server, admin client, dan middleware
+supabase/migrations/    # Migration database Supabase
+public/                 # Aset statis
+docs/                   # Dokumentasi produk dan desain
+```
+
+## Lisensi
+
+Private project — seluruh hak cipta dilindungi.
